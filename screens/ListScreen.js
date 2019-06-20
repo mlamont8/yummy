@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text } from "react-native";
 import { ExpoLinksView } from "@expo/samples";
 import { connect } from "react-redux";
 
-class LinksScreen extends React.Component {
+class ListScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -26,9 +26,9 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(LinksScreen);
+)(ListScreen);
 
-LinksScreen.navigationOptions = {
+ListScreen.navigationOptions = {
   title: "Links"
 };
 

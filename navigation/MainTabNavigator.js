@@ -7,8 +7,8 @@ import {
 
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/LinksScreen";
-import SettingsScreen from "../screens/SettingsScreen";
+import ListScreen from "../screens/ListScreen";
+import MapScreen from "../screens/MapScreen";
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
@@ -21,28 +21,28 @@ HomeStack.navigationOptions = {
   )
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen
+const ListStack = createStackNavigator({
+  Lists: ListScreen
 });
 
-LinksStack.navigationOptions = {
+ListStack.navigationOptions = {
   tabBarLabel: "List",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={"ios-restaurant"} />
   )
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen
+const MapStack = createStackNavigator({
+  Map: MapScreen
 });
 
-SettingsStack.navigationOptions = {
+MapStack.navigationOptions = {
   tabBarLabel: "Map",
   tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"ios-map"} />
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack
+  ListStack,
+  MapStack
 });

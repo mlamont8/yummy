@@ -1,34 +1,31 @@
-import * as WebBrowser from "expo-web-browser";
 import React from "react";
 import { connect } from "react-redux";
 import { Platform, StyleSheet, Text, View, Button } from "react-native";
-import * as Location from "expo-location";
-import * as Permissions from "expo-permissions";
 import { getLocation } from "./../actions";
-import { MonoText } from "../components/StyledText";
-import { gray } from "ansi-colors";
 
-const HomeScreen = props => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <Button onPress={props.location} title="Find Resturants in Your Area" />
-      </View>
+class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onButtonPress = this.onButtonPress.bind(this);
+  }
 
-      <View
-        style={{
-          flexGrow: 1,
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        {/* <Text>Latitude: {this.state.latitude}</Text>
-          <Text>Longitude: {this.state.longitude}</Text> */}
-        {/* {this.state.error ? <Text>Error: {this.state.error}</Text> : null} */}
+  onButtonPress() {
+    this.props.location();
+    this.props.navigation.navigate("Lists");
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this.onButtonPress}
+            title="Find Resturants in Your Area"
+          />
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
