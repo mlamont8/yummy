@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 // import { getList } from "./../actions";
 
 class ListScreen extends React.Component {
-  // componentDidMount() {
-  //   this.props.getList(2, 3);
-  // }
-
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -23,16 +19,8 @@ class ListScreen extends React.Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getList: (lat, long) => {
-//       dispatch(getList(lat, long));
-//     }
-//   };
-// };
-
 const mapStateToProps = state => ({
-  location: state.location
+  list: state.listReducer
 });
 
 export default connect(
