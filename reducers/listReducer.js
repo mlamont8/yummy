@@ -1,4 +1,4 @@
-export default function listReducer(state = null, action) {
+export default function listReducer(state = {}, action) {
   switch (action.type) {
     case "LIST_FETCH_SUCCESS":
       return {

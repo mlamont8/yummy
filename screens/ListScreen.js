@@ -1,26 +1,29 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import { ScrollView, StyleSheet, View, FlatList, Text } from "react-native";
 import { ExpoLinksView } from "@expo/samples";
 import { connect } from "react-redux";
-// import { getList } from "./../actions";
 
 class ListScreen extends React.Component {
+  _keyExtractor = (item, index) => item.id;
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {/**
-         * Go ahead and delete ExpoLinksView and replace it with your content;
-         * we just wanted to provide you with some helpful links.
-         */}
-
-        <ExpoLinksView />
-      </ScrollView>
+      <View style={styles.container}>
+        <FlatList
+          data={this.props.list}
+          keyExtractor={this._keyExtractor}
+          renderItem={({ item }) => (
+            <View style={{ flex: 1, height: 80 }}>
+              <Text>{item.name}</Text>
+            </View>
+          )}
+        />
+      </View>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  list: state.listReducer
+  list: state.listReducer.list
 });
 
 export default connect(
