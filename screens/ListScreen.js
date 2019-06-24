@@ -1,21 +1,43 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, FlatList, Text } from "react-native";
-import { ExpoLinksView } from "@expo/samples";
+import { StyleSheet, View, FlatList, Text, Image } from "react-native";
 import { connect } from "react-redux";
 
 class ListScreen extends React.Component {
   _keyExtractor = (item, index) => item.id;
+
+  listItem = ({ item }) => (
+    <View style={{ flex: 1, flexDirection: "row", height: 80, padding: 5 }}>
+      <View style={{ flex: 1 }}>
+        <Image
+          style={styles.image}
+          source={{
+            uri: item.image_url
+          }}
+        />
+      </View>
+
+      <View style={{ flex: 3 }}>
+        <Text numberOfLines={1}>{item.name}</Text>
+        <Text numberOfLines={1}>{item.location.address1}</Text>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Text>{(item.distance * 0.000621371).toFixed(1)} mi.</Text>
+          <Text>{item.price}</Text>
+        </View>
+      </View>
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>{item.rating}</Text>
+      </View>
+    </View>
+  );
+
   render() {
     return (
       <View style={styles.container}>
         <FlatList
           data={this.props.list}
-          keyExtractor={this._keyExtractor}
-          renderItem={({ item }) => (
-            <View style={{ flex: 1, height: 80 }}>
-              <Text>{item.name}</Text>
-            </View>
-          )}
+          keyExtractor={item => item.id}
+          renderItem={this.listItem}
         />
       </View>
     );
@@ -40,5 +62,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: "#fff"
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 25
   }
 });
