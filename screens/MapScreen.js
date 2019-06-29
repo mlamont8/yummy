@@ -1,14 +1,8 @@
 import React from "react";
-import { ExpoConfigView } from "@expo/samples";
+import MapView from "react-native-maps";
 
-export default function MapScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+export default class App extends React.Component {
+  render() {
+    return <MapView style={{ flex: 1 }} />;
+  }
 }
-
-MapScreen.navigationOptions = {
-  title: "app.json"
-};
