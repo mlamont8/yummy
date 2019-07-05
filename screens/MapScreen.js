@@ -12,6 +12,7 @@ class MapScreen extends React.Component {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     };
+    // t
     return (
       <MapView style={{ flex: 1 }} region={region}>
         {this.props.list.map(marker => (
@@ -23,11 +24,7 @@ class MapScreen extends React.Component {
             }}
             title={marker.name}
           >
-            <Text>{marker.name}</Text>
-            <Image
-              source={{ uri: marker.image_url }}
-              style={{ width: 20, height: 20, borderRadius: 10 }}
-            />
+            <Image source={require("../assets/images/restaurant-marker.png")} />
           </Marker>
         ))}
       </MapView>

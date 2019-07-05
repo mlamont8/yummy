@@ -13,10 +13,6 @@ import rootReducer from "./reducers/rootReducer";
 
 import AppNavigator from "./navigation/AppNavigator";
 
-if (__DEV__) {
-  import("./ReactotronConfig").then(() => console.log("Reactotron Configured"));
-}
-
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
