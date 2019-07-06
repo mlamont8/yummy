@@ -1,10 +1,18 @@
 import React from "react";
-import { Image, Text } from "react-native";
-import MapView from "react-native-maps";
-import { Marker } from "react-native-maps";
+import { Image } from "react-native";
+import MapView, { Marker, Callout } from "react-native-maps";
+import MapCallout from "../components/mapCallout";
+import TabBarIcon from "../components/TabBarIcon";
 import { connect } from "react-redux";
 
 class MapScreen extends React.Component {
+  static navigationOptions = {
+    tabBarLabel: "Map",
+    tabBarIcon: ({ focused }) => (
+      <TabBarIcon focused={focused} name={"ios-map"} />
+    )
+  };
+
   render() {
     let region = {
       latitude: this.props.latitude,
@@ -12,9 +20,9 @@ class MapScreen extends React.Component {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     };
-    // t
+
     return (
-      <MapView style={{ flex: 1 }} region={region}>
+      <MapView style={{ flex: 1 }} region={region} showsUserLocation>
         {this.props.list.map(marker => (
           <Marker
             key={marker.id}
@@ -25,6 +33,9 @@ class MapScreen extends React.Component {
             title={marker.name}
           >
             <Image source={require("../assets/images/restaurant-marker.png")} />
+            <Callout>
+              <MapCallout {...marker} />
+            </Callout>
           </Marker>
         ))}
       </MapView>

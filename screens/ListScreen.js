@@ -1,9 +1,17 @@
 import React from "react";
 import { StyleSheet, View, FlatList, Text, Image } from "react-native";
+import TabBarIcon from "../components/TabBarIcon";
 import { connect } from "react-redux";
 import ListItem from "./../components/ListItem";
 
 class ListScreen extends React.Component {
+  static navigationOptions = {
+    tabBarLabel: "List",
+    tabBarIcon: ({ focused }) => (
+      <TabBarIcon focused={focused} name={"ios-restaurant"} />
+    )
+  };
+
   render() {
     return (
       <View style={styles.container}>

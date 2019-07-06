@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Platform, StyleSheet, Text, View, Button } from "react-native";
+import TabBarIcon from "../components/TabBarIcon";
 import { getLocation } from "./../actions";
 
 class HomeScreen extends React.Component {
@@ -8,6 +9,13 @@ class HomeScreen extends React.Component {
     super(props);
     this.onButtonPress = this.onButtonPress.bind(this);
   }
+
+  static navigationOptions = {
+    tabBarLabel: "Home",
+    tabBarIcon: ({ focused }) => (
+      <TabBarIcon focused={focused} name={"ios-home"} />
+    )
+  };
 
   onButtonPress() {
     this.props.location();
