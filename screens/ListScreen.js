@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, FlatList, Text, Image } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import TabBarIcon from "../components/TabBarIcon";
 import { connect } from "react-redux";
 import ListItem from "./../components/ListItem";

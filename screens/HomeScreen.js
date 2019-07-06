@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Platform, StyleSheet, Text, View, Button } from "react-native";
+import { Platform, StyleSheet, View, Button } from "react-native";
 import TabBarIcon from "../components/TabBarIcon";
 import { getLocation } from "./../actions";
 
@@ -19,7 +19,7 @@ class HomeScreen extends React.Component {
 
   onButtonPress() {
     this.props.location();
-    this.props.navigation.navigate("Lists");
+    this.props.navigation.navigate("List");
   }
   render() {
     return (
