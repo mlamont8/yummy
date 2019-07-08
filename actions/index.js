@@ -28,7 +28,6 @@ const fetchApi = location => async dispatch => {
       latitude: lat
     }
   };
-  console.log(newApi);
   const url = `https://api.yelp.com/v3/businesses/search`;
   dispatch(loading(true));
   try {
