@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Platform, StyleSheet, View, Button } from "react-native";
 import TabBarIcon from "../components/TabBarIcon";
+import Loading from "./loading";
 import { getLocation } from "./../actions";
 
 class HomeScreen extends React.Component {

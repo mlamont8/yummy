@@ -29,13 +29,21 @@ const fetchApi = location => async dispatch => {
     }
   };
   const url = `https://api.yelp.com/v3/businesses/search`;
+  dispatch(loading(true));
   try {
     const response = await axios.get(url, config);
     dispatch(listFetchSuccess(response.data.businesses));
+    dispatch(loading(false));
   } catch (error) {
     dispatch(listFetchError(error));
+    dispatch(loading(false));
   }
 };
+
+const loading = status => ({
+  type: "LOADING",
+  status
+});
 
 const listFetchSuccess = response => ({
   type: "LIST_FETCH_SUCCESS",
