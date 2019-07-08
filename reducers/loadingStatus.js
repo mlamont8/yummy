@@ -1,4 +1,4 @@
-export default function loadingStatus(state = null, action) {
+export default function loadingStatus(state = { loading: false }, action) {
   switch (action.type) {
     case "LOADING":
       return {

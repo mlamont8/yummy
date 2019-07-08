@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import TabBarIcon from "../components/TabBarIcon";
 import { connect } from "react-redux";
 import ListItem from "./../components/ListItem";
+import Loading from "./loading";
 
 class ListScreen extends React.Component {
   static navigationOptions = {
@@ -15,18 +16,23 @@ class ListScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList
-          data={this.props.list}
-          keyExtractor={item => item.id}
-          renderItem={ListItem}
-        />
+        {this.props.loading ? (
+          <Loading />
+        ) : (
+          <FlatList
+            data={this.props.list}
+            keyExtractor={item => item.id}
+            renderItem={ListItem}
+          />
+        )}
       </View>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  list: state.listReducer.list
+  list: state.listReducer.list,
+  loading: state.loadingStatus.loading
 });
 
 export default connect(
