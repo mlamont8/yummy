@@ -1,9 +1,9 @@
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import axios from "axios";
+import Config from "../config";
 
-const apiKey =
-  "u73eeKg1xaXmX0heumo_q2RrORoyIllsMSME0I1fgHfsS1s6P5UgSwd_TBV-uC9NE2g8RuLh5qKsPgbhxYqgM9tZLaec5-qbzWuZItRuzn3pL8THtuNxibZqUR8MXXYx";
+const apiKey = Config.google;
 
 export const getLocation = () => async dispatch => {
   let { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -28,6 +28,7 @@ const fetchApi = location => async dispatch => {
       latitude: lat
     }
   };
+  console.log(newApi);
   const url = `https://api.yelp.com/v3/businesses/search`;
   dispatch(loading(true));
   try {
