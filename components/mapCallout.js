@@ -1,23 +1,30 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, WebView, StyleSheet } from "react-native";
 
 export default function MapCallout(props) {
   return (
     <View style={styles.callout}>
-      <Text style={styles.text}>{props.name}</Text>
+      <View style={styles.firstRow}>
+        <Text numberOfLines={2} style={styles.text}>
+          {props.name}
+        </Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   callout: {
-    width: 30,
-    backgroundColor: "#550bbc",
-    padding: 5,
+    width: 250,
+    height: 110,
     borderRadius: 5
   },
   text: {
-    color: "#FFF",
+    color: "#000",
     fontWeight: "bold"
+  },
+  firstRow: {
+    flex: 1,
+    flexDirection: "row"
   }
 });

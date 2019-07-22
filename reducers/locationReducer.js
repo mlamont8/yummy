@@ -1,4 +1,7 @@
-export default function locationReducer(state = null, action) {
+export default function locationReducer(
+  state = { latitude: 0, longitude: 0 },
+  action
+) {
   switch (action.type) {
     case "GET_LOCATION_SUCCESS":
       return {
