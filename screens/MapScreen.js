@@ -15,11 +15,8 @@ import { connect } from "react-redux";
 
 const { width, height } = Dimensions.get("window");
 
-// const CARD_HEIGHT = height / 4;
-// const CARD_WIDTH = CARD_HEIGHT - 50;
-
 const CARD_HEIGHT = 150;
-const CARD_WIDTH = 250;
+const CARD_WIDTH = 150;
 
 class MapScreen extends React.Component {
   static navigationOptions = {
@@ -65,8 +62,6 @@ class MapScreen extends React.Component {
   }
 
   render() {
-    console.log(CARD_HEIGHT, "height");
-    console.log(CARD_WIDTH, "width");
     let region = {
       latitude: this.props.latitude,
       longitude: this.props.longitude,
@@ -125,6 +120,7 @@ class MapScreen extends React.Component {
                   <Animated.View style={[styles.ring, scaleStyle]} />
                   <View style={styles.marker} />
                 </Animated.View>
+                {/* <Image source={require("../assets/images/restaurant-marker.png")} /> */}
               </Marker>
             );
           })}
